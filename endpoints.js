@@ -66,8 +66,8 @@ something.heroku.com/api/diner/:id
 // return
 
 {
-  user_id,
-  user_name
+  userId,
+  username
 }
 
 // [POST] Login (/api/auth/login)
@@ -216,6 +216,39 @@ Ok
 //response
 Ok
 
+
+//[GET] retrieve all cuisineTypes (/api/cuisines)
+[{
+  cuisineTypeId,
+  cuisineTypeName
+}]
+
+//[POST] create new cuisineType (/api/cuisines)
+{
+ cuisineTypeName
+}
+//response (all cuisines, including the new one):
+[{
+  cuisineTypeId,
+  cuisineTypeName
+}]
+
+//[PUT] edit cuisineType (/api/cuisines/:cuisineTypeID)
+{
+ cuisineTypeName
+}
+//response (all cuisines, including the edited one):
+[{
+  cuisineTypeId,
+  cuisineTypeName
+}]
+
+//[DELETE] delete cuisineType (/api/cuisines/:cuisineTypeID)
+//response (the non-removed cuisines):
+[{
+  cuisineTypeId,
+  cuisineTypeName
+}]
 
 //![POST] diner search (/api/trucks/) 
 TBD
