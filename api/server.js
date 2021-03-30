@@ -23,6 +23,10 @@ server.use('/api/diner', dinerRouter)
 server.use('/api/operator', operatorRouter)
 server.use('/api/trucks', trucksRouter)
 
+server.get('/', (req, res) => {
+  res.send('API is Up')
+})
+
 // Catch all
 server.use('*', (req, res) => {
   res.status(404).json({
