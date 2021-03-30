@@ -23,6 +23,7 @@ exports.up = async (knex) => {
     .createTable('trucks', (trucks) => {
       trucks.increments('truck_id')
       trucks.string('truck_external_id', 255).notNullable().unique().index()
+      trucks.string('truck_name', 255).notNullable().index()
       trucks
         .integer('user_id')
         .unsigned()
@@ -36,17 +37,76 @@ exports.up = async (knex) => {
       trucks.string('address', 255)
       trucks.string('city', 255)
       trucks.string('state', 2)
-      trucks.integer('zip_code',5)
+      trucks.integer('zip_code', 5)
       trucks.date('arrival_date')
       trucks.time('arrival_time')
       trucks.date('departure_date')
       trucks.time('departure_time')
       trucks.timestamps(false, true)
-
+    })
+    .createTable('favorite_trucks', (fave) => {
+      fave.increments('favorite_truck_id')
+      fave
+        .integer('user_id')
+        .unsigned()
+        .notNullable()
+        .references('user_id')
+        .inTable('users')
+      fave
+        .integer('truck_id')
+        .unsigned()
+        .notNullable()
+        .references('truck_id')
+        .inTable('trucks')
+    })
+    .createTable('customer_reviews', (rev) => {
+      rev.increments('customer_review_id')
+      rev
+        .integer('user_id')
+        .unsigned()
+        .notNullable()
+        .references('user_id')
+        .inTable('users')
+      rev
+        .integer('truck_id')
+        .unsigned()
+        .notNullable()
+        .references('truck_id')
+        .inTable('trucks')
+      rev.decimal('customer_rating', 3, 2).unsigned().notNullable()
+      rev.text('customer_review')
+    })
+    .createTable('cuisine_types', (cuis) => {
+      cuis.increments('cuisine_type_id')
+      cuis.string('cuisine_type_name', 255).unique().notNullable()
+      cuis
+        .integer('user_id')
+        .unsigned()
+        .references('user_id')
+        .inTable('users')
+        .onUpdate('RESTRICT')
+        .onDelete('RESTRICT')
+    })
+    .createTable('truck_cuisines', (tc) => {
+      tc.increments()
+      tc.integer('truck_id')
+        .unsigned()
+        .notNullable()
+        .references('truck_id')
+        .inTable('trucks')
+      tc.integer('cuisine_type_id')
+        .unsigned()
+        .notNullable()
+        .references('cuisine_type_id')
+        .inTable('cuisine_types')
     })
 }
 
 exports.down = async (knex) => {
+  await knex.schema.dropTableIfExists('truck_cuisines')
+  await knex.schema.dropTableIfExists('cuisine_types')
+  await knex.schema.dropTableIfExists('customer_reviews')
+  await knex.schema.dropTableIfExists('favorite_trucks')
   await knex.schema.dropTableIfExists('trucks')
   await knex.schema.dropTableIfExists('emails')
   await knex.schema.dropTableIfExists('users')
