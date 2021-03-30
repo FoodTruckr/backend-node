@@ -217,13 +217,13 @@ Ok
 Ok
 
 
-//[GET] retrieve all cuisineTypes (/api/cuisines)
+//[GET] retrieve all cuisineTypes (/api/trucks/cuisines)
 [{
   cuisineTypeId,
   cuisineTypeName
 }]
 
-//[POST] create new cuisineType (/api/cuisines)
+//[POST] create new cuisineType (/api/trucks/cuisines)
 {
  cuisineTypeName
 }
@@ -233,7 +233,7 @@ Ok
   cuisineTypeName
 }]
 
-//[PUT] edit cuisineType (/api/cuisines/:cuisineTypeID)
+//[PUT] edit cuisineType (/api/trucks/cuisines/:cuisineTypeID)
 {
  cuisineTypeName
 }
@@ -243,7 +243,7 @@ Ok
   cuisineTypeName
 }]
 
-//[DELETE] delete cuisineType (/api/cuisines/:cuisineTypeID)
+//[DELETE] delete cuisineType (/api/trucks/cuisines/:cuisineTypeID)
 //response (the non-removed cuisines):
 [{
   cuisineTypeId,
