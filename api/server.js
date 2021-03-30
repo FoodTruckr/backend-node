@@ -1,7 +1,6 @@
 const express = require('express')
 const helmet = require('helmet')
 const cors = require('cors')
-const morgan = require('morgan')
 
 const authRouter = require('./auth/auth-router')
 const dinerRouter = require('./diner/diner-router')
@@ -14,6 +13,7 @@ server.use(helmet())
 server.use(cors())
 
 if (process.env.NODE_ENV === 'development') {
+  const morgan = require('morgan')
   server.use(morgan('dev'))
 }
 
