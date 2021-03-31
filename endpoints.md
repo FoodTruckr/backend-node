@@ -1,6 +1,6 @@
 something.heroku.com/api/diner/:id
 
-//GET diner (/api/diner/:id)
+// [GET] diner (/api/diner/:id)
 {
   userId,
   username,
@@ -51,6 +51,21 @@ something.heroku.com/api/diner/:id
   imageOfTruck
   customerRatingAvg,
   cuisineTypes
+}]
+
+// [GET] Get all menu item (/api/operator/:id/menu)
+[{
+  itemId,
+  itemName,
+  itemDescription,
+  itemPrice,
+  itemPhoto
+}]
+
+//[GET] retrieve all cuisineTypes (/api/operator/cuisines)
+[{
+  cuisineTypeId,
+  cuisineTypeName
 }]
 
 // [POST] new diner/operator (/api/auth/new)
@@ -119,7 +134,8 @@ Ok
   truckName
 }]
 
-// [POST] new menu item (api/operator/:id/:truckId/)
+
+// [POST] new menu item (api/operator/:id/menu/)
 {
   itemName,
   itemDescription,
@@ -127,7 +143,7 @@ Ok
   itemPhoto
 }
 
-// response
+// response (all menu items, including the new one)
 
 [{
   itemId,
@@ -137,7 +153,17 @@ Ok
   itemPhoto
 }]
 
-// [PUT] edit menu item (api/operator/:id/:truckId/:itemId)
+//[POST] create new cuisineType (/api/operator/:operatorId/cuisines)
+{
+ cuisineTypeName
+}
+//response (all cuisines, including the new one):
+[{
+  cuisineTypeId,
+  cuisineTypeName
+}]
+
+// [PUT] edit menu item (api/operator/:id/menu/:itemId)
   {
     itemName,
     itemDescription,
@@ -145,7 +171,7 @@ Ok
     itemPhoto
   }
 
-// response
+// response (all menu items, including the edited one)
 [{
   itemId,
   itemName,
@@ -175,18 +201,26 @@ Ok
 //response
 Ok
 
+//[PUT] edit cuisineType (/api/operator/:operatorId/cuisines/:cuisineTypeId)
+{
+ cuisineTypeName
+}
+//response (all cuisines, including the edited one):
+[{
+  cuisineTypeId,
+  cuisineTypeName
+}]
+
 // [DELETE] diner favorite truck (/api/diner/:id/favorites)
 {
   truckId
 }
 
-//response
-[{
+//response (the still favorited trucks)
   [{
     truckId,
     truckName
   }]
-}]
 
 
 // [DELETE] truck (api/operator/:id/:truckId/)
@@ -197,9 +231,9 @@ Ok
   truckName
 }]
 
-// [DELETE] delete menu item (api/operator/:id/:truckId/:itemId)
+// [DELETE] delete menu item (api/operator/:id/menu/:itemId)
 
-//response
+//response (the remaing operator's menu items)
 [{
   itemId,
   itemName,
@@ -217,33 +251,7 @@ Ok
 Ok
 
 
-//[GET] retrieve all cuisineTypes (/api/trucks/cuisines)
-[{
-  cuisineTypeId,
-  cuisineTypeName
-}]
-
-//[POST] create new cuisineType (/api/trucks/cuisines)
-{
- cuisineTypeName
-}
-//response (all cuisines, including the new one):
-[{
-  cuisineTypeId,
-  cuisineTypeName
-}]
-
-//[PUT] edit cuisineType (/api/trucks/cuisines/:cuisineTypeID)
-{
- cuisineTypeName
-}
-//response (all cuisines, including the edited one):
-[{
-  cuisineTypeId,
-  cuisineTypeName
-}]
-
-//[DELETE] delete cuisineType (/api/trucks/cuisines/:cuisineTypeID)
+//[DELETE] delete cuisineType (/api/operator/:operatorId/cuisines/:cuisineTypeId)
 //response (the non-removed cuisines):
 [{
   cuisineTypeId,
