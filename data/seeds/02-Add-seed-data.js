@@ -1,15 +1,15 @@
 exports.seed = async function (knex) {
   await knex('users').insert([
     {
-      user_external_id: 'a8Um',
-      username: 'Batman',
-      password: 'batman123',
+      user_external_id: 'bF6SsD',
+      username: 'batman',
+      password: '$2y$08$D8QvTr88zGqyxT/qPcR3beOrvRJqy1UCawwTW/zbO9uRbojp/OAji', // batman123
       role: 'operator'
     },
     {
-      user_external_id: 'cg9Um',
-      username: 'Robin',
-      password: 'robin123',
+      user_external_id: 'FjHUzO',
+      username: 'robin',
+      password: '$2y$08$DPnNvuwB75oZGK0YbUq4Neq63MCJ.KDJgB4Q7h.t4JXfnCO4G4.Ve', // robin123
       role: 'client'
     }
   ])
@@ -25,7 +25,7 @@ exports.seed = async function (knex) {
   ])
   await knex('trucks').insert([
     {
-      truck_external_id: '999abc',
+      truck_external_id: 'zmkJne',
       truck_name: 'Mother Trucker',
       user_id: 1,
       truck_latitude: null,
@@ -40,7 +40,7 @@ exports.seed = async function (knex) {
       departure_time: '9:00 pm est'
     },
     {
-      truck_external_id: 'zuMYs',
+      truck_external_id: 'Sz1XKx',
       truck_name: 'Mad Mex',
       user_id: 1,
       truck_latitude: null,
