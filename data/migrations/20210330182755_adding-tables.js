@@ -73,7 +73,7 @@ exports.up = async (knex) => {
         .notNullable()
         .references('truck_id')
         .inTable('trucks')
-      rev.decimal('customer_rating', 3, 2).unsigned().notNullable()
+      rev.integer('customer_rating', 1).unsigned().notNullable()
       rev.text('customer_review')
     })
     .createTable('cuisine_types', (cuis) => {
@@ -121,7 +121,7 @@ exports.up = async (knex) => {
         .onUpdate('CASCADE')
       menu.string('item_name', 255).notNullable()
       menu.text('item_description').notNullable()
-      menu.decimal('item_price', null, 2)
+      menu.decimal('item_price', 6, 2).unsigned()
     })
     .createTable('menu_item_photos', (mp) => {
       mp.increments('menu_item_photo_id')
