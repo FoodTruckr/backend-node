@@ -20,42 +20,6 @@ router.get('/:truckId', (req, res, next) => {
   }
 })
 
-// [GET] retrieve all cuisine types (/cuisines)
-router.get('/cuisines', (req, res, next) => {
-  try {
-    res.send('exists')
-  } catch (err) {
-    next(err)
-  }
-})
-
-// [POST] create new cuisine type (/cuisines)
-router.post('/cuisines', (req, res, next) => {
-  try {
-    res.send('exists')
-  } catch (err) {
-    next(err)
-  }
-})
-
-// [PUT] edit cuisine type (/cuisines)
-router.put('/cuisines', (req, res, next) => {
-  try {
-    res.send('exists')
-  } catch (err) {
-    next(err)
-  }
-})
-
-// [DELETE] delete cuisine type (/cuisines)
-router.delete('/cuisines', (req, res, next) => {
-  try {
-    res.send('exists')
-  } catch (err) {
-    next(err)
-  }
-})
-
 // eslint-disable-next-line
 router.use((err, req, res, next) => {
   res.status(500).json({
