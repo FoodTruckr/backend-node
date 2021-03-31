@@ -41,7 +41,7 @@ router.get('/', (req, res, next) => {
           { cuisineTypeId: 2, cuisineTypeName: 'Mexican' },
           { cuisineTypeId: 3, cuisineTypeName: 'Tex-Mex' }
         ]
-      }
+      },
       {
         truckId: 4,
         truckName: 'Trucky',
