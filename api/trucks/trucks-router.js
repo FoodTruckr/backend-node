@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const Truck = require('./trucks-model')
+const { truckExists } = require('./trucks-middleware')
 
 /***** Base URL: /api/trucks *****/
 
@@ -14,9 +15,9 @@ router.get('/', async (req, res, next) => {
 })
 
 // [GET] individual truck (/:truckId)
-router.get('/:truckId', (req, res, next) => {
+router.get('/:truckId', truckExists, (req, res, next) => {
   try {
-    res.send('exists')
+    res.json(req.truckExists)
   } catch (err) {
     next(err)
   }
