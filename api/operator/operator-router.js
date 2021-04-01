@@ -3,7 +3,7 @@ const router = require('express').Router()
 /***** Base URL: /api/operator *****/
 
 // [GET] individual operator (/:operatorId)
-router.get('/:operatorId', (req, res, next) => {
+router.get('/', (req, res, next) => {
   try {
     res.json([
       {
@@ -49,7 +49,7 @@ router.get('/:operatorId', (req, res, next) => {
 })
 
 // [POST] add new truck (/:operatorId)
-router.post('/:operatorId', (req, res, next) => {
+router.post('/', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {
@@ -58,7 +58,7 @@ router.post('/:operatorId', (req, res, next) => {
 })
 
 // [POST] new menu item (/:operatorId/:truckId)
-router.post('/:operatorId/:truckId', (req, res, next) => {
+router.post('/:truckId', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {
@@ -67,7 +67,7 @@ router.post('/:operatorId/:truckId', (req, res, next) => {
 })
 
 // [PUT] edit menu item (/:operatorId/:truckId/:itemId)
-router.post('/:operatorId/:truckId/:itemId', (req, res, next) => {
+router.post('/:truckId/:itemId', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {
@@ -76,7 +76,7 @@ router.post('/:operatorId/:truckId/:itemId', (req, res, next) => {
 })
 
 // [PUT] edit truck info (/:operatorId/:truckId/)
-router.post('/:operatorId/:truckId', (req, res, next) => {
+router.post('/:truckId', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {
@@ -85,7 +85,7 @@ router.post('/:operatorId/:truckId', (req, res, next) => {
 })
 
 // [DELETE] delete truck (/:operatorId/:truckId/)
-router.post('/:operatorId/:truckId', (req, res, next) => {
+router.post('/:truckId', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {
@@ -94,7 +94,7 @@ router.post('/:operatorId/:truckId', (req, res, next) => {
 })
 
 // [DELETE] delete menu item (/:operatorId/:truckId/:itemId)
-router.post('/:operatorId/:truckId', (req, res, next) => {
+router.post('/:truckId', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {
@@ -112,7 +112,7 @@ router.get('/cuisines', (req, res, next) => {
 })
 
 // [POST] create new cuisine type (/:userId/cuisines)
-router.post('/:userId/cuisines', (req, res, next) => {
+router.post('/cuisines', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {
@@ -121,7 +121,7 @@ router.post('/:userId/cuisines', (req, res, next) => {
 })
 
 // [PUT] edit cuisine type (/:userId/cuisines/:cuisineTypeId)
-router.put('/:userId/cuisines/:cuisineTypeId', (req, res, next) => {
+router.put('/cuisines/:cuisineTypeId', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {
@@ -130,7 +130,7 @@ router.put('/:userId/cuisines/:cuisineTypeId', (req, res, next) => {
 })
 
 // [DELETE] delete cuisine type (/:userId/cuisines/:cuisineTypeId)
-router.delete('/:userId/cuisines/:cuisineTypeId', (req, res, next) => {
+router.delete('/cuisines/:cuisineTypeId', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {
@@ -139,15 +139,15 @@ router.delete('/:userId/cuisines/:cuisineTypeId', (req, res, next) => {
 })
 
 // [GET] Get all menu item (/:userId/menu)
-router.get('/:userId/menu', (req, res, next) => {
+router.get('/menu', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {
     next(err)
   }
 })
-// [POST] new menu item (/:userId/menu/)
-router.post('/:userId/menu/', (req, res, next) => {
+// [POST] new menu item (/:userId/menu)
+router.post('/menu', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {
@@ -155,7 +155,7 @@ router.post('/:userId/menu/', (req, res, next) => {
   }
 })
 // [PUT] edit menu item (/:userId/menu/:itemId)
-router.put('/:userId/menu/:itemId', (req, res, next) => {
+router.put('/menu/:itemId', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {
@@ -163,7 +163,7 @@ router.put('/:userId/menu/:itemId', (req, res, next) => {
   }
 })
 // [DELETE] delete menu item (/:userId/menu/:itemId)
-router.delete('/:userId/menu/:itemId', (req, res, next) => {
+router.delete('/menu/:itemId', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {
