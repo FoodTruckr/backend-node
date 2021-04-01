@@ -3,7 +3,7 @@ const router = require('express').Router()
 /***** Base URL: /api/diner *****/
 
 // [GET] Retrieve individual diner info (/api/diner/:dinerId)
-router.get('/:dinerId', (req, res, next) => {
+router.get('/', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {
@@ -12,7 +12,7 @@ router.get('/:dinerId', (req, res, next) => {
 })
 
 // [POST] Add favorite trucks (/:dinerId/favorites)
-router.post('/:dinerId/favorites', (req, res, next) => {
+router.post('/favorites', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {
@@ -21,7 +21,7 @@ router.post('/:dinerId/favorites', (req, res, next) => {
 })
 
 // [POST] Add customer rating for truck (/:dinerId/ratings)
-router.post('/:dinerId/ratings', (req, res, next) => {
+router.post('/ratings', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {
@@ -30,7 +30,7 @@ router.post('/:dinerId/ratings', (req, res, next) => {
 })
 
 // [PUT] Edit diner rating of truck (/:dinerId/ratings)
-router.put('/:dinerId/ratings', (req, res, next) => {
+router.put('/ratings', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {
@@ -39,7 +39,7 @@ router.put('/:dinerId/ratings', (req, res, next) => {
 })
 
 // [DELETE] Delete diner ratings of truck (/:dinerId/ratings)
-router.delete('/:dinerId/ratings', (req, res, next) => {
+router.delete('/ratings', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {
@@ -48,7 +48,7 @@ router.delete('/:dinerId/ratings', (req, res, next) => {
 })
 
 // [DELETE] Remove truck from diner favorites(/:dinerId/favorites)
-router.delete('/:dinerId/favorites', (req, res, next) => {
+router.delete('/favorites', (req, res, next) => {
   try {
     res.send('exists')
   } catch (err) {

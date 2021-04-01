@@ -78,6 +78,7 @@ cuisineTypes
 }]
 
 // [GET] Get all menu item (/api/operator/:id/menu)
+//Dont need
 [{
 itemId,
 itemName,
@@ -143,7 +144,8 @@ truckId,
 rating
 }
 //response
-Ok
+
+Array of all ratings
 
 //[POST] operator new truck (api/operator/:id/)
 {
@@ -222,7 +224,8 @@ truckId,
 rating
 }
 //response
-Ok
+new avg
+all ratings of truck
 
 //[PUT] edit cuisineType (/api/operator/:operatorId/cuisines/:cuisineTypeId)
 {
@@ -270,7 +273,8 @@ itemPhoto
 truckId,
 }
 //response
-Ok
+new updated
+full array or ratings
 
 //[DELETE] delete cuisineType (/api/operator/:operatorId/cuisines/:cuisineTypeId)
 //response (the non-removed cuisines):

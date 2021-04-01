@@ -11,7 +11,7 @@ const { checkUsernameExists, buildToken } = require('./auth-middleware')
 //! Need middleware to verify info from request
 
 // [POST] create new diner/operator (/new)
-router.post('/new', async (req, res, next) => {
+router.post('/register', async (req, res, next) => {
   const { username, password, role, email } = req.body
   try {
     const hash = await bcrypt.hashSync(password, ROUNDS)
