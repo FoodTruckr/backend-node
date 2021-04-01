@@ -16,7 +16,7 @@ async function getAllTrucks() {
           (
             SELECT array_to_json(array_agg(row_to_json(r))) AS customer_ratings
               FROM (
-                SELECT customer_rating
+                SELECT avg(customer_rating)
                 FROM customer_reviews
                 WHERE trucks.truck_id = customer_reviews.truck_id
               )r
@@ -43,10 +43,7 @@ async function getAllTrucks() {
           truckPhotoUrl: img.truck_photo_url
         }
       }),
-      customerRatingAvg:
-        truk.customer_ratings.reduce((acc, rate) => {
-          return acc + Number(Object.values(rate))
-        }, 0) / truk.customer_ratings.length,
+      customerRatingAvg: truk.customer_ratings[0].avg,
       cuisineTypes: truk.cuisine_types.map((ct) => {
         return {
           cuisineTypeId: ct.cuisine_type_id,
@@ -56,6 +53,10 @@ async function getAllTrucks() {
     }
   })
   return processedTrucks
+}
+
+function getTruckByExtId() {
+  db('trucks')
 }
 
 module.exports = {
