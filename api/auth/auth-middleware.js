@@ -16,7 +16,6 @@ const checkUsernameExists = async (req, res, next) => {
     next(err)
   }
 }
-
 const buildToken = (user) => {
   const payload = {
     subject: user.user_external_id,
@@ -34,23 +33,33 @@ const restricted = (only) => (req, res, next) => {
   if (!token) {
     res.status(401).json({ message: 'A token is required ' })
   } else {
-    jwt.verify(token, jwtSecret, (err, decoded) => {
+    jwt.verify(token, jwtSecret, async (err, decoded) => {
       if (err) {
         res
           .status(401)
           .json({ message: 'Token error, please try logging in again' })
       } else {
         req.decodedJwt = decoded
-        if (only && req.decodedJwt.role !== only) {
-          res.status(403).json({
-            message: `Sorry, only ${only}s are allowed here. Try a different account.`
-          })
-        } else if (!checkUsernameExists(req.decodedJwt.username)) {
+        req.userExists = await Auth.userExists(req.decodedJwt.username)
+        if (!req.userExists) {
           res.status(404).json({
             message:
               "Something went wrong! We can't find you in our system! Please try logging in again."
           })
+        } else if (req.decodedJwt.role !== req.userExists.role) {
+          res
+            .status(401)
+            .json({
+              message:
+                'There is a mismatch with your token, please try logging in again'
+            })
+        } else if (only && req.decodedJwt.role !== only) {
+          res.status(403).json({
+            message: `Sorry, only ${only}s are allowed here. Try a different account.`
+          })
         } else {
+          console.log(req.decodedJwt)
+          console.log(req.userExists)
           next()
         }
       }

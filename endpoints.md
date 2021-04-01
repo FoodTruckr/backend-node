@@ -24,7 +24,7 @@ itemPhotoUrl:
 ],
 }
 
-// [GET] diner (/api/diner/:id)
+// [GET] diner (/api/diner)
 {
 userId,
 username,

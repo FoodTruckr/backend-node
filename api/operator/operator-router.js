@@ -5,44 +5,7 @@ const router = require('express').Router()
 // [GET] individual operator (/:operatorId)
 router.get('/', (req, res, next) => {
   try {
-    res.json([
-      {
-        truckId: 1,
-        truckName: 'Mother Trucker',
-        imageOfTruck:
-          'https://www.bangkokexpatlife.com/wp-content/uploads/2015/07/mother-trucker-food-truck-in-bangkok.jpg',
-        customerRatingAvg: '4.5',
-        cuisineTypes: [
-          { cuisineTypeId: 1, cuisineTypeName: 'American' },
-          { cuisineTypeId: 2, cuisineTypeName: 'Mexican' },
-          { cuisineTypeId: 3, cuisineTypeName: 'Tex-Mex' }
-        ]
-      },
-      {
-        truckId: 2,
-        truckName: 'Mother Trucker Squared',
-        imageOfTruck:
-          'https://www.bangkokexpatlife.com/wp-content/uploads/2015/07/mother-trucker-food-truck-in-bangkok.jpg',
-        customerRatingAvg: '4.5',
-        cuisineTypes: [
-          { cuisineTypeId: 1, cuisineTypeName: 'American' },
-          { cuisineTypeId: 2, cuisineTypeName: 'Mexican' },
-          { cuisineTypeId: 3, cuisineTypeName: 'Tex-Mex' }
-        ]
-      },
-      {
-        truckId: 3,
-        truckName: 'The Truckiest Mother Trucker',
-        imageOfTruck:
-          'https://www.bangkokexpatlife.com/wp-content/uploads/2015/07/mother-trucker-food-truck-in-bangkok.jpg',
-        customerRatingAvg: '4.5',
-        cuisineTypes: [
-          { cuisineTypeId: 1, cuisineTypeName: 'American' },
-          { cuisineTypeId: 2, cuisineTypeName: 'Mexican' },
-          { cuisineTypeId: 3, cuisineTypeName: 'Tex-Mex' }
-        ]
-      }
-    ])
+    res.send('exists')
   } catch (err) {
     next(err)
   }

@@ -10,7 +10,7 @@ exports.seed = async function (knex) {
       user_external_id: 'FjHUzO',
       username: 'robin',
       password: '$2y$08$DPnNvuwB75oZGK0YbUq4Neq63MCJ.KDJgB4Q7h.t4JXfnCO4G4.Ve', // robin123
-      role: 'client'
+      role: 'diner'
     }
   ])
   await knex('emails').insert([

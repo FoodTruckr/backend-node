@@ -149,8 +149,30 @@ async function getTruckByExtId(extId) {
   return foundTruck.json_build_object
 }
 
+async function getTruckRatings(truck_id) {
+  const ratings = await db('customer_reviews as cr')
+    .select('username', 'customer_rating', 'customer_review')
+    .where('cr.truck_id', truck_id)
+    .join('users as u', 'u.user_id', 'cr.user_id')
+  const { avg } = await db('customer_reviews as cr')
+    .avg('customer_rating')
+    .where('cr.truck_id', truck_id)
+    .first()
+  return {
+    customerRatingAvg: Number(Number(avg).toFixed(1)),
+    customerRatings: ratings.map((rev) => {
+      return {
+        username: rev.username,
+        starRating: rev.customer_rating,
+        review: rev.customer_review
+      }
+    })
+  }
+}
+
 module.exports = {
   getAllTrucks,
   getTruckByExtId,
-  getTruckId
+  getTruckId,
+  getTruckRatings
 }
