@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const Truck = require('./trucks-model')
+const { truckExists } = require('./trucks-middleware')
 
 /***** Base URL: /api/trucks *****/
 
@@ -8,65 +9,15 @@ router.get('/', async (req, res, next) => {
   try {
     const allTrucks = await Truck.getAllTrucks()
     res.json(allTrucks)
-    // res.json([
-    //   {
-    //     truckId: 1,
-    //     truckName: 'Mother Trucker',
-    //     imageOfTruck:
-    //       'https://www.bangkokexpatlife.com/wp-content/uploads/2015/07/mother-trucker-food-truck-in-bangkok.jpg',
-    //     customerRatingAvg: '4.5',
-    //     cuisineTypes: [
-    //       { cuisineTypeId: 1, cuisineTypeName: 'American' },
-    //       { cuisineTypeId: 2, cuisineTypeName: 'Mexican' },
-    //       { cuisineTypeId: 3, cuisineTypeName: 'Tex-Mex' }
-    //     ]
-    //   },
-    //   {
-    //     truckId: 2,
-    //     truckName: 'Mother Trucker Squared',
-    //     imageOfTruck:
-    //       'https://www.bangkokexpatlife.com/wp-content/uploads/2015/07/mother-trucker-food-truck-in-bangkok.jpg',
-    //     customerRatingAvg: '4.5',
-    //     cuisineTypes: [
-    //       { cuisineTypeId: 1, cuisineTypeName: 'American' },
-    //       { cuisineTypeId: 2, cuisineTypeName: 'Mexican' },
-    //       { cuisineTypeId: 3, cuisineTypeName: 'Tex-Mex' }
-    //     ]
-    //   },
-    //   {
-    //     truckId: 3,
-    //     truckName: 'The Truckiest Mother Trucker',
-    //     imageOfTruck:
-    //       'https://www.bangkokexpatlife.com/wp-content/uploads/2015/07/mother-trucker-food-truck-in-bangkok.jpg',
-    //     customerRatingAvg: '4.5',
-    //     cuisineTypes: [
-    //       { cuisineTypeId: 1, cuisineTypeName: 'American' },
-    //       { cuisineTypeId: 2, cuisineTypeName: 'Mexican' },
-    //       { cuisineTypeId: 3, cuisineTypeName: 'Tex-Mex' }
-    //     ]
-    //   },
-    //   {
-    //     truckId: 4,
-    //     truckName: 'Trucky',
-    //     imageOfTruck:
-    //       'https://www.bangkokexpatlife.com/wp-content/uploads/2015/07/mother-trucker-food-truck-in-bangkok.jpg',
-    //     customerRatingAvg: '4.5',
-    //     cuisineTypes: [
-    //       { cuisineTypeId: 1, cuisineTypeName: 'American' },
-    //       { cuisineTypeId: 2, cuisineTypeName: 'Mexican' },
-    //       { cuisineTypeId: 3, cuisineTypeName: 'Tex-Mex' }
-    //     ]
-    //   }
-    // ])
   } catch (err) {
     next(err)
   }
 })
 
 // [GET] individual truck (/:truckId)
-router.get('/:truckId', (req, res, next) => {
+router.get('/:truckId', truckExists, (req, res, next) => {
   try {
-    res.send('exists')
+    res.json(req.truckExists)
   } catch (err) {
     next(err)
   }

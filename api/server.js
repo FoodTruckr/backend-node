@@ -1,6 +1,7 @@
 const express = require('express')
 const helmet = require('helmet')
 const cors = require('cors')
+const { restricted } = require('./auth/auth-middleware')
 
 const authRouter = require('./auth/auth-router')
 const dinerRouter = require('./diner/diner-router')
@@ -19,9 +20,9 @@ if (process.env.NODE_ENV === 'development') {
 
 //Routes
 server.use('/api/auth', authRouter)
-server.use('/api/diner', dinerRouter)
-server.use('/api/operator', operatorRouter)
-server.use('/api/trucks', trucksRouter)
+server.use('/api/diner', restricted('diner'), dinerRouter)
+server.use('/api/operator', restricted('operator'), operatorRouter)
+server.use('/api/trucks', restricted(), trucksRouter)
 
 server.get('/', (req, res) => {
   res.send('API is Up')
