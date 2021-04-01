@@ -18,7 +18,14 @@ async function addUser(user) {
 
 function userExists(user) {
   return db('users as u')
-    .select('user_external_id', 'username', 'password', 'role', 'email')
+    .select(
+      'u.user_id',
+      'user_external_id',
+      'username',
+      'password',
+      'role',
+      'email'
+    )
     .where('username', user)
     .join('emails as e', 'u.user_id', 'e.user_id')
     .first()
