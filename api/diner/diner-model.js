@@ -69,13 +69,13 @@ async function updateRating(user_id, truckId, starRating, review) {
 
 async function deleteRating(user_id, truckId) {
   const truck_id = await Truck.getTruckId(truckId)
-  await db('customer_reviews').where({ user_id, truck_id }).delete()
+  await db('customer_reviews').where({ user_id, truck_id }).del()
   return Truck.getTruckRatings(truck_id)
 }
 
 async function removeFave(user_id, truckId) {
   const truck_id = await Truck.getTruckId(truckId)
-  await db('favorite_trucks').where({ user_id, truck_id }).delete()
+  await db('favorite_trucks').where({ user_id, truck_id }).del()
   return getFaves(user_id)
 }
 

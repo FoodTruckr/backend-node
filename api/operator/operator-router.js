@@ -1,11 +1,19 @@
 const router = require('express').Router()
+const Op = require('./operator-model')
 
 /***** Base URL: /api/operator *****/
 
 // [GET] individual operator (/:operatorId)
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
+  const { user_id } = req.userExists
   try {
-    res.send('exists')
+    let trucks = await Op.getOpTrucks(user_id)
+    trucks = {
+      username: req.userExists.username,
+      role: req.userExists.role,
+      trucksOwned: trucks.trucksowned
+    }
+    res.json(trucks)
   } catch (err) {
     next(err)
   }

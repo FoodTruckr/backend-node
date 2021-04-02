@@ -1,4 +1,4 @@
-something.heroku.com/api/diner/:id
+something.heroku.com/api/diner/
 
 singleTruck: {
 truckId: 1,
@@ -34,13 +34,22 @@ truckName
 }]
 }
 
-// [GET] operator (/api/operator/:id)
+// [GET] operator (/api/operator)
 {
 userId,
 username,
 trucksOwned: [{
 truckId,
-truckName
+truckName,
+currentlocation,
+truckimages,
+cuisinetypes,
+customerratingavg,
+customerratings,
+arrivaltime,
+arrivaldate,
+departuretime,
+departuredate
 }]
 }
 
