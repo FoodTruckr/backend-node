@@ -7,7 +7,12 @@ const Op = require('./operator-model')
 router.get('/', async (req, res, next) => {
   const { user_id } = req.userExists
   try {
-    const trucks = await Op.getOpTrucks(user_id)
+    let trucks = await Op.getOpTrucks(user_id)
+    trucks = {
+      username: req.userExists.username,
+      role: req.userExists.role,
+      trucksOwned: trucks.trucksowned
+    }
     res.json(trucks)
   } catch (err) {
     next(err)
