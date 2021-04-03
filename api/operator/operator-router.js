@@ -9,6 +9,7 @@ router.get('/', async (req, res, next) => {
   try {
     let trucks = await Op.getOpTrucks(user_id)
     trucks = {
+      userId: req.decodedJwt.subject,
       username: req.userExists.username,
       role: req.userExists.role,
       trucksOwned: trucks.trucksowned
