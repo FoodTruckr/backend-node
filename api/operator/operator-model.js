@@ -5,7 +5,7 @@ async function getOpTrucks(operatorId) {
     .select(
       db.raw(
         `json_agg(json_build_object(
-        'truckId', truck_id,
+        'truckId', truck_external_id,
         'truckName',truck_name,
         'currentLocation', (SELECT 
           json_build_object(

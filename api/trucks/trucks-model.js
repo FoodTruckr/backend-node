@@ -69,7 +69,7 @@ async function getTruckByExtId(extId) {
     .select(
       db.raw(
         `json_build_object(
-          'truckId', truck_id,
+          'truckId', truck_external_id,
           'truckName',truck_name,
           'currentLocation', (SELECT 
             json_build_object(
