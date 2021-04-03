@@ -63,5 +63,5 @@ async function editTruck(truckId, truckInfo) {}
 
 module.exports = {
   getOpTrucks,
-  addTruck
+  editTruck
 }
